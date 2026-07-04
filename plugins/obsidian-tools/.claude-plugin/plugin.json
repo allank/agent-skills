@@ -1,0 +1,11 @@
+{
+  "name": "obsidian-tools",
+  "description": "Obsidian vault CLI skill — vault-native search, create, tasks, daily notes, and properties via the Obsidian CLI",
+  "version": "1.0.0",
+  "author": {
+    "name": "Allan Kent",
+    "email": "allan.kent@gmail.com"
+  },
+  "homepage": "https://github.com/allan-kent/agent-skills",
+  "license": "MIT"
+}
