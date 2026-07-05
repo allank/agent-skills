@@ -1,6 +1,6 @@
 # lpc-author — Lean Product Canvas skill
 
-A Claude skill that coaches a product manager through writing a sharp Lean Product Canvas (LPC). It guides you Socratically through Problem, Customer, Outcomes, JTBD, Solutions, Hypotheses, Riskiest Assumption, Experiments, and Cost, then outputs the final canvas as a Markdown table you can take wherever you want it to live.
+A Claude skill that coaches a product manager through writing a sharp Lean Product Canvas (LPC). It guides you Socratically through Problem, Customer, Outcomes, JTBD, Solutions, Hypotheses, Riskiest Assumption, Experiments, and Cost, then outputs the final canvas as structured Markdown you can take wherever you want it to live.
 
 ## Scope
 
@@ -42,7 +42,7 @@ No scripts, no Python, no Word templates. The skill runs entirely on Claude's re
 ## How it works
 
 1. Claude runs you through three phases — Problem/Customer/Outcomes → JTBD/Solutions/Hypotheses → Risk/Experiment/Cost — critiquing each input against the quality standards.
-2. When all three phases are solid, Claude reads `assets/canvas-template.md` and produces the final canvas as a vertical Markdown table with YAML frontmatter.
+2. When all three phases are solid, Claude reads `assets/canvas-template.md` and produces the final canvas as `##`-headed Markdown sections with YAML frontmatter.
 3. You take it from there.
 
 ## Notes

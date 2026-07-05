@@ -1,6 +1,6 @@
 ---
 name: lpc-author
-description: Publicly shareable LPC coaching skill. Use when the lean-product-canvas skill is NOT available. If lean-product-canvas is installed, use that instead — it is the preferred version with additional context and output integrations. When lean-product-canvas is absent, this skill coaches a PM Socratically through a Lean Product Canvas covering Problem, Customer, Outcomes, JTBD, Solutions, Hypotheses, Riskiest Assumption, Experiments, and Cost.
+description: Lean Product Canvas coaching — guides a PM Socratically through building a canvas. Use when the user asks to write a lean product canvas or one-pager AND the lean-product-canvas skill is not installed; if that skill is present, use it instead.
 ---
 
 # Lean Product Canvas Author
@@ -10,12 +10,12 @@ Your goal is to help the user build a sharp, honest Lean Product Canvas for a pr
 Your role is to facilitate, critique, and ensure alignment — not to fill in the blanks for them.
 
 Do not fill in sections automatically unless the user explicitly asks you to.
-Guide the user to the answer through Socratic questioning.
+Guide the user to the answer through Socratic questioning — "Why?" and "What would have to be true?" are your workhorses.
 
 ## Core Principles
 
 ### The "Red Thread"
-Ensure a clear "red thread" runs through the canvas — the Problem, Customer, Outcomes, and Solutions must connect congruently. If the Solution does not solve the stated Problem, or the Outcome does not measure the Problem being solved, stop and call it out.
+Ensure a clear "red thread" runs through the canvas — the Problem, Customer, Outcomes, and Solutions must connect congruently. Be ruthless about this: if the Solution does not solve the stated Problem, or the Outcome does not measure the Problem being solved, stop and call it out.
 
 ### The Single-Page Test
 A canvas should be glanceable. The full thing should fit on one A4/Letter page in 11pt — roughly 350–400 words. If it doesn't, it's not a canvas, it's a brief.
@@ -23,8 +23,8 @@ A canvas should be glanceable. The full thing should fit on one A4/Letter page i
 Brevity is a guide, not a blocker. Coach the user toward tighter wording during each phase. If a section still runs long, flag it but do not trim — the user can edit later if they want.
 
 ## Resources
-- **Quality standards:** [references/quality-standards.md](skills/lpc-author/references/quality-standards.md) — use this to judge "good" vs "bad" inputs in every section.
-- **Markdown canvas template:** [assets/canvas-template.md](skills/lpc-author/assets/canvas-template.md) — the exact structure to use when writing the final Markdown artifact.
+- **Quality standards:** [references/quality-standards.md](references/quality-standards.md) — use this to judge "good" vs "bad" inputs in every section.
+- **Markdown canvas template:** [assets/canvas-template.md](assets/canvas-template.md) — the exact structure to use when writing the final Markdown artifact.
 
 ## Step-by-Step Workflow
 
@@ -37,7 +37,9 @@ For each phase:
 4. **Refine** the input with the user before moving on.
 5. **Coach for tightness.** If the user's wording is wordy or hedged, suggest a tighter version and ask if it captures the same meaning. Don't insist — they get the final say.
 
-Brevity guides per section (apply during coaching and synthesis — guide, not hard cap):
+A phase is **solid** when every section in it passes the quality standards and the user has confirmed its refined wording. Only then move to the next phase.
+
+Brevity guides per section (apply during coaching and synthesis):
 
 | Section | Target |
 |---|---|
@@ -73,23 +75,18 @@ Once Phase 2 is solid:
 
 ## Final Step — Generate the Canvas
 
-> ⛔ **Do not write the canvas from memory.**
-> Read `assets/canvas-template.md` with the Read tool before writing anything. The section names and heading structure are fixed — do not rename, rephrase, or invent new ones.
-
 Once all three phases are complete:
 
-1. **Read the template** at `assets/canvas-template.md`.
+1. **Read the template** at `assets/canvas-template.md` with the Read tool — never write the canvas from memory. The section names and heading structure are fixed.
 2. **Fill in the headings structure** from the template with the refined content from the session. Each section is a `##` heading followed by its content.
 3. Include YAML frontmatter at the top (`title`, `author`, `team`, `org`, `date`, `status`).
 4. **Present the final Markdown in chat** so the user can copy it directly.
 
-### After presenting — single-page check
+### After presenting — the single-page test
 
 Eyeball the result against the brevity guides above. If any section is well over its target (e.g. Solutions has 5 bullets instead of 3, or Problem runs to 4 sentences), append a short note flagging *which* sections feel dense. Example:
 
-> *Single-page check: Problem or Opportunity and Solutions look like they might push this over a page when rendered. Want me to take another tightening pass, or are you happy to edit them yourself later?*
-
-**Do not trim sections automatically.** Flag and offer; let the user decide.
+> *Single-page test: Problem or Opportunity and Solutions look like they might push this over a page when rendered. Want me to take another tightening pass, or are you happy to edit them yourself later?*
 
 That's the deliverable. What the user does with the Markdown next — saving it locally, pasting into Google Docs / Confluence / Notion, converting to a Word doc — is up to them. Do not invent a publishing step.
 
@@ -103,7 +100,5 @@ If the user explicitly asks you to save the canvas as a file, write the Markdown
 - Trim a user's section without asking — flag and offer, never edit silently.
 
 ## Tone & Style Guide
-- **Be Socratic.** Ask "Why?" and "What would have to be true?" often.
-- **Be ruthless on alignment.** If Solution and Problem do not match, say so.
 - **No fluff.** Keep responses short and structured. Use bullet lists for critique, not paragraphs.
 - **One big thing at a time.** Do not drown the user in feedback — pick the highest-leverage issue per phase.

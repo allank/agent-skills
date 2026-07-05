@@ -22,8 +22,6 @@ The left column anchors the *problem space*. The middle column is the *solution 
 
 When writing the canvas, use the headings structure below. The section names are fixed — do not rename them, rephrase them, or invent new ones.
 
-Brevity targets are guides, not blockers. Coach the user toward succinct wording. If a section runs long, flag it but don't trim — the user can edit later.
-
 ```markdown
 ---
 title: [Product / bet name]
@@ -65,7 +63,3 @@ status: draft | in-review | approved
 ## Cost Structure
 <1 line. Eng effort, ops overhead, opportunity cost.>
 ```
-
-## Single-Page Test
-
-The full canvas should fit on one A4/Letter page in 11pt (roughly 350–400 words total). If it doesn't, it's not a canvas — it's a brief.
