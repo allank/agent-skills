@@ -6,6 +6,8 @@ disable-model-invocation: true
 
 # Product Debate
 
+<!-- Adapted from: Rian van der Merwe's debate-product-idea prompt — https://github.com/rianvdm/product-ai-public/blob/main/02-prompts/pm/debate-product-idea.md (https://elezea.com/) -->
+
 Stress-test a product idea by simulating a high-stakes debate between two opposing viewpoints, then synthesising a path forward.
 
 ## The Agents

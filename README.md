@@ -46,6 +46,7 @@ git clone https://github.com/allank/agent-skills ~/code/agent-skills
 
 - `linear-walkthrough` and `interactive-explainer` are adapted from Simon Willison's agentic engineering patterns: [Linear walkthroughs](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) and [Interactive explanations](https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/)
 - `product-grill` is inspired by Matt Pocock's [Grill with docs](https://www.aihero.dev/grill-with-docs)
+- `product-debate` is adapted from [Rian van der Merwe](https://elezea.com/)'s [debate-product-idea prompt](https://github.com/rianvdm/product-ai-public/blob/main/02-prompts/pm/debate-product-idea.md)
 
 ## Portable Core Rule
 
