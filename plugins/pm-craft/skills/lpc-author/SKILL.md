@@ -1,6 +1,7 @@
 ---
 name: lpc-author
-description: Lean Product Canvas coaching — guides a PM Socratically through building a canvas. Use when the user asks to write a lean product canvas or one-pager AND the lean-product-canvas skill is not installed; if that skill is present, use it instead.
+description: Coaches a PM Socratically through writing a Lean Product Canvas, output as structured Markdown.
+disable-model-invocation: true
 ---
 
 # Lean Product Canvas Author
