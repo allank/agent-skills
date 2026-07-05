@@ -1,6 +1,7 @@
 ---
 name: mind-ensemble
-description: Democratise mental models through four modes (Tuning, Solo, Counterpoint, Harmony). Helps users analyse problems through personas or frameworks, with Simple track for beginners and Expert track for practitioners.
+description: Analyses a problem through mental-model lenses — 11 personas and 20 frameworks, four modes (Tuning, Solo, Counterpoint, Harmony), Simple and Expert tracks.
+disable-model-invocation: true
 ---
 
 # Mind Ensemble
@@ -21,6 +22,13 @@ Users select from **personas**—intuitive role-based lenses like "The Visionary
 
 ### Expert Track
 Users select from **frameworks**—formal mental models like Cynefin or Jobs to Be Done. Expert track also includes access to all personas.
+
+## How to Run
+
+- If the user named a mode and lens(es), go straight there.
+- Otherwise default to **Tuning** — it recommends lenses and ends by offering the other modes.
+- Infer the track from the selection (personas → Simple, frameworks → Expert); default to Simple if unclear.
+- **Before embodying any lens, read its file.** The file is the definition — never improvise a lens from its name or its one-line index gloss.
 
 ## Four Modes
 
@@ -52,12 +60,7 @@ Users select from **frameworks**—formal mental models like Cynefin or Jobs to 
 4. Identify blind spots of this lens
 5. Provide actionable next steps
 
-**Output includes:**
-- Analysis from the lens's perspective
-- Key questions this lens asks
-- Actionable next steps
-- Educational note about the lens used
-- Link to learn more (attribution to original source)
+**Mode-specific output:** the key questions this lens asks, and its blind spots.
 
 ---
 
@@ -72,36 +75,24 @@ Users select from **frameworks**—formal mental models like Cynefin or Jobs to 
 3. Find common ground and synthesis
 4. Propose middle-ground approach
 
-**Output includes:**
-- Perspective 1 (lens A)
-- Perspective 2 (lens B)
-- Key tensions between them
-- Middle ground / synthesis
-- Actionable next steps
-- Educational notes about both lenses
-- Attribution links
+**Mode-specific output:** both perspectives, the key tensions between them, and the middle ground.
 
 ---
 
 ### 4. Harmony
-**Purpose:** Synthesise a new bespoke approach from two lenses.
+**Purpose:** Compose two lenses — each applied, with its own discipline intact, to the part of the problem it is built for.
 
 **Inputs:** 2 lenses + problem description
 
 **Workflow:**
-1. Extract core principles from each lens
-2. Identify complementary elements
-3. Create a synthesised approach specifically for this problem
-4. Apply the hybrid approach to generate insights
+1. Divide the labour: which aspect of the problem does each lens serve? (e.g. Wardley Mapping tells you *where* components are evolving; Three Horizons tells you *when* to shift investment)
+2. Apply the first lens fully to its part
+3. Apply the second lens fully to its part, informed by the first's output
+4. Report what the composition reveals that neither lens shows alone
 
-**Output includes:**
-- Brief description of the synthesised approach
-- How it applies to the user's problem
-- Actionable next steps
-- Attribution to source frameworks/personas
+**Never blend.** Each lens keeps its own constraints — do not average their principles into a hybrid method, and do not name the combination. If the two lenses want to argue rather than divide the labour, that is Counterpoint: switch modes.
 
-> [!NOTE]
-> Do not try to name the hybrid framework. Just apply it.
+**Mode-specific output:** the division of labour, and what the composition reveals.
 
 ---
 
@@ -164,7 +155,7 @@ Located in [frameworks/](frameworks/). Each file defines a formal mental model.
 
 ## Output Requirements
 
-Every output MUST include:
+Every analysis output (Solo, Counterpoint, Harmony) MUST include:
 
 1. **Analysis/Perspectives** — the core insight from the lens(es)
 2. **Actionable Next Steps** — concrete things the user can do
@@ -181,6 +172,5 @@ In Simple track, after completing analysis, suggest relevant Expert frameworks:
 ## Voice and Tone
 
 - **Accessible**: Avoid jargon unless using Expert track
-- **Actionable**: Always end with concrete next steps
 - **Balanced**: When in Counterpoint, give fair voice to both sides
 - **Educational**: Help users learn, not just consume
