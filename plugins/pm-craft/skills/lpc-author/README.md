@@ -31,7 +31,7 @@ No scripts, no Python, no Word templates. The skill runs entirely on Claude's re
    <your-workspace>/.claude/skills/lpc-author/SKILL.md
    ```
 4. Restart your Cowork session (or start a new conversation). The skill will appear in the available-skills list.
-5. Ask Claude something like *"Help me write a lean product canvas for [idea]"*.
+5. Invoke the skill by name — type `/lpc-author` (the skill is user-invoked; Claude won't fire it automatically from a plain request).
 
 ## Install — Claude Code CLI (optional)
 
