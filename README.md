@@ -6,17 +6,18 @@ Allan Kent's open-source PM and productivity skills for Claude Code and Antigrav
 
 ### pm-craft
 
-PM craft skills — thinking, exploration, and communication.
+PM craft skills — thinking, exploration, and communication. Two fire automatically from conversation; the rest you invoke by name (`/pm-craft` routes you if you forget which).
 
-| Skill | Trigger | What it does |
-|-------|---------|--------------|
-| `thinking-partner` | `/thinking-partner` | Systems thinking via Cynefin, Three Horizons, Wardley Mapping, Idealized Design |
-| `lpc-author` | `/lpc-author` | Socratically coach a PM through writing a Lean Product Canvas (use lean-product-canvas if installed) |
+| Skill | Invocation | What it does |
+|-------|------------|--------------|
+| `pm-craft` | `/pm-craft` | Router — matches your need to the right skill below |
+| `product-grill` | automatic | Stress-test a product idea by interview — six PM lenses → conviction brief |
+| `thinking-partner` | automatic | Systems thinking coach — Cynefin, Three Horizons, Wardley Mapping, Idealised Design |
+| `lpc-author` | `/lpc-author` | Socratic coaching through writing a Lean Product Canvas |
+| `product-debate` | `/product-debate` | Simulated Visionary-vs-Skeptic debate over an idea, then a synthesised path forward |
 | `linear-walkthrough` | `/linear-walkthrough` | Narrative, step-by-step walkthrough of code, docs, or concepts |
-| `interactive-explainer` | `/interactive-explainer` | Build a self-contained interactive HTML visualisation of a process or logic |
-| `mind-ensemble` | `/mind-ensemble` | Mental model exploration through personas and frameworks |
-| `product-debate` | `/product-debate` | Pressure-test ideas, expose assumptions, rigorous critique |
-| `product-grill` | `/product-grill` | Stress-test a product idea across six PM lenses → conviction brief |
+| `interactive-explainer` | `/interactive-explainer` | Self-contained interactive HTML visualisation of a process or logic |
+| `mind-ensemble` | `/mind-ensemble` | Mental-model analysis — 11 personas, 20 frameworks, four modes |
 
 ### obsidian-tools
 
@@ -30,8 +31,8 @@ Obsidian vault integration.
 
 ```bash
 claude plugin marketplace add allank/agent-skills
-claude plugin install pm-craft@agent-skills
-claude plugin install obsidian-tools@agent-skills
+claude plugin install pm-craft@allank-skills
+claude plugin install obsidian-tools@allank-skills
 ```
 
 ## Install (Antigravity)
@@ -43,4 +44,4 @@ git clone https://github.com/allank/agent-skills ~/code/agent-skills
 
 ## Portable Core Rule
 
-All skills in this repo follow the [Agent Skills standard](https://agentskills.io): only `name` and `description` in frontmatter. No Claude-specific extensions. Skills work in Claude Code, Claude Cowork, and Antigravity.
+All skills in this repo follow the [Agent Skills standard](https://agentskills.io) with minimal frontmatter: `name`, `description`, and — on skills meant to be invoked by name rather than fired automatically — `disable-model-invocation`. Skills work in Claude Code, Claude Cowork, and Antigravity; harnesses that don't recognise the flag simply treat those skills as automatic, so their one-line descriptions still read sensibly.
