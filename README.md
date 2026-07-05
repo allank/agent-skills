@@ -21,11 +21,11 @@ PM craft skills — thinking, exploration, and communication. Two fire automatic
 
 ### obsidian-tools
 
-Obsidian vault integration.
+Obsidian vault integration. Requires the [Obsidian CLI](https://obsidian.md/help/cli) (early access, Obsidian 1.12+) with Obsidian running; command reference verified against Obsidian 1.13.
 
-| Skill | Trigger | What it does |
-|-------|---------|--------------|
-| `obsidian-cli` | `/obsidian-cli` | Full CLI reference for vault-native operations: search, create, tasks, daily notes, properties |
+| Skill | Invocation | What it does |
+|-------|------------|--------------|
+| `obsidian-cli` | automatic | Vault-native operations via the Obsidian CLI: search, create, tasks, properties, daily notes — preferred over raw file I/O |
 
 ## Install (Claude Code)
 
