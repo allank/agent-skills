@@ -42,6 +42,11 @@ git clone https://github.com/allank/agent-skills ~/code/agent-skills
 ~/code/agent-skills/scripts/deploy-antigravity.sh
 ```
 
+## Credits
+
+- `linear-walkthrough` and `interactive-explainer` are adapted from Simon Willison's agentic engineering patterns: [Linear walkthroughs](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) and [Interactive explanations](https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/)
+- `product-grill` is inspired by Matt Pocock's [Grill with docs](https://www.aihero.dev/grill-with-docs)
+
 ## Portable Core Rule
 
 All skills in this repo follow the [Agent Skills standard](https://agentskills.io) with minimal frontmatter: `name`, `description`, and — on skills meant to be invoked by name rather than fired automatically — `disable-model-invocation`. Skills work in Claude Code, Claude Cowork, and Antigravity; harnesses that don't recognise the flag simply treat those skills as automatic, so their one-line descriptions still read sensibly.

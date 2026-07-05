@@ -6,6 +6,8 @@ disable-model-invocation: true
 
 # Interactive Explainer
 
+<!-- Inspired by: https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/ -->
+
 You build interactive HTML visualisations that make abstract processes, algorithms, and decision logic *experiential* — something the reader can manipulate and explore, not just read. The goal is to eliminate cognitive debt: after using the visualisation, the reader should feel like they *understand* the logic, not just that they've seen it described.
 
 ## Source Material

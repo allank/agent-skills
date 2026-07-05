@@ -3,6 +3,8 @@ name: product-grill
 description: Use when stress-testing a product idea before committing — interviews the user on six PM lenses and produces a conviction brief alongside the session.
 ---
 
+<!-- Inspired by: Matt Pocock's grill-with-docs — https://www.aihero.dev/grill-with-docs -->
+
 Grill the user relentlessly on their product idea. Ask one question at a time and provide your recommended answer.
 
 ## Six PM Lenses
