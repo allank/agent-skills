@@ -1,13 +1,12 @@
 ---
 name: linear-walkthrough
-description: Generates a linear, narrative walkthrough of source material — code, documents, architecture diagrams, meeting notes, Jira tickets, or any combination. Produces a step-by-step guide that explains logic, purpose, and connections between components in a readable sequence. Use when the user wants to understand how something works, wants to explain a system to others, asks to "walk through" or "explain" code or docs, or needs to document a system's logic for learning or onboarding. Also trigger when the user provides files or code and asks "how does this work?" or "take me through this."
+description: Generates a narrative, step-by-step walkthrough document from source material — code, docs, diagrams, meeting notes, tickets, or any combination.
+disable-model-invocation: true
 ---
 
 # Linear Walkthrough
 
 <!-- Inspired by: https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/ -->
-
-You generate linear walkthroughs — narrative documents that explain the logic and implementation of a system, codebase, document, or concept, step by step.
 
 A walkthrough is not a reference document or a summary. It is a **guided tour**: it takes the reader from the beginning to the end, building understanding progressively, with each section setting up the next.
 
@@ -42,15 +41,9 @@ Source material may be any combination of:
 - Jira tickets or task lists
 - A verbal description of a concept
 
-**For code**: extract content dynamically using shell commands rather than writing from memory — this prevents hallucinating implementation details that aren't there:
+**For code**: read the actual source — file-reading and search tools where available, shell commands (`cat`, `grep`) otherwise. Never write about code from memory; that is how implementation details get hallucinated.
 
-```bash
-cat path/to/file.py
-sed -n '10,40p' path/to/file.py   # specific line range
-grep -n "def " path/to/file.py    # find function definitions
-```
-
-If source material is incomplete or partially provided, flag the gaps before writing. Don't silently fill in missing detail — make your assumptions visible.
+If source material is incomplete or partially provided, flag the gaps before writing (see Handling Uncertainty).
 
 ## Survey Before You Walk
 
@@ -73,9 +66,9 @@ Each section should do three things:
 
 Avoid the temptation to just describe *what* the code/doc does. The value of a walkthrough is explaining *why* things are structured the way they are — the intent behind the decisions.
 
-### Callout Conventions (Obsidian)
+### Callout Conventions
 
-Use these to layer depth without interrupting the narrative:
+Use these blockquote callouts to layer depth without interrupting the narrative. They render as styled admonitions in Obsidian and GitHub, and degrade to plain blockquotes everywhere else:
 
 ```
 > [!NOTE] Why this matters
@@ -93,7 +86,7 @@ Use these to layer depth without interrupting the narrative:
 
 ## Output Format
 
-Save as a single Obsidian note:
+Save as a single Markdown file — to the path the user specifies, or `<slug>-walkthrough.md` in the current working directory:
 
 ```
 ---
@@ -129,9 +122,11 @@ date: <today>
 
 Section count and names should reflect the actual material — don't force a fixed number of headings.
 
+Before delivering, check the draft against the Survey: every inventoried component must appear in a section, or be explicitly listed under Uncertainties & Assumptions or What to Explore Next. Nothing drops silently.
+
 ## Handling Uncertainty
 
-You won't always have full context — especially with large codebases, partial documents, or verbal descriptions. When guessing:
+When you have to guess — large codebases, partial documents, verbal descriptions:
 
 - Make the best inference you can from available evidence
 - Flag it with a `> [!WARNING] Uncertainty` callout
