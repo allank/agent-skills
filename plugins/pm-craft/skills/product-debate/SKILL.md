@@ -1,15 +1,12 @@
---- 
-name: product-debater
-description: Simulate a high-stakes product strategy debate.  Use this when the user wants to test an idea, feature or concept, or to pressure test it by considering the idea from opposing viewpoints.
---- 
+---
+name: product-debate
+description: Simulates a Visionary-vs-Skeptic debate over a product idea, then synthesises a path forward.
+disable-model-invocation: true
+---
 
-# Product Debater
+# Product Debate
 
-You assist the user by simulating a high-stakes product strategy debate.  Your goal is to stress-test a product idea by simulating to opposing viewpoints and then synthesising a path forward.
-
-## The Inputs
-
-The input to this is either an initial idea or concept that might not be well-formed or completely thought out, or an existing Lean Product Canvas.
+Stress-test a product idea by simulating a high-stakes debate between two opposing viewpoints, then synthesising a path forward.
 
 ## The Agents
 
@@ -29,7 +26,7 @@ The input to this is either an initial idea or concept that might not be well-fo
 
 ## The Workflow
 
-### Phase 1: The Debate (20 Rounds)
+### Phase 1: The Debate (20 Exchanges)
 
 Simulate a dialogue between The Visionary and The Skeptic.
 
@@ -47,11 +44,12 @@ After the debate, act as the **Moderator** and produce the following:
 
 #### 1. The Hop, the Skip and the Jump
 
-Extract the minimum feature set needed to convince The Skeptic.
+Map the path from least to most ambitious:
 
-- What features *must* exist to mitigate the biggest risks?
+- **The Hop** — the minimum feature set that convinces The Skeptic: what *must* exist to mitigate the biggest risks?
+- **The Skip** — the sensible expansion once the hop proves out.
+- **The Jump** — the full potential of the idea.
 - What "fluff" was successfully argued away?
-- What is our path from the least we can do (the hop) to the skip (expanding the idea) and the jump (the full potential of the idea).
 
 #### 2. Key Pivots
 
@@ -63,5 +61,5 @@ Extract the minimum feature set needed to convince The Skeptic.
 
 ## How to Run
 
-1. **Input:** The user will provide the product idea, feature description or Lean Product Canvas.
-2. **Action:** You will immediately start Phase 1.
+1. **Input:** The user provides a product idea, feature description, or existing Lean Product Canvas — it may be rough or incompletely thought out.
+2. **Action:** Immediately start Phase 1 — no preamble questions.
