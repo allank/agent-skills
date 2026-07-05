@@ -11,7 +11,7 @@ Match the user's need to one skill below and tell them what to type. Most of the
 | The user wants to… | Skill | How it fires |
 |---|---|---|
 | Stress-test a product idea by being interviewed — six PM lenses, produces a conviction brief | product-grill | Fires on its own when you describe an idea to stress-test |
-| Widen the lens on a strategic problem — Cynefin, Three Horizons, Wardley, Idealized Design | thinking-partner | Fires on its own ("think bigger", "sanity check", or name a framework) |
+| Widen the lens on a strategic problem — Cynefin, Three Horizons, Wardley, Idealised Design | thinking-partner | Fires on its own ("think bigger", "sanity check", or name a framework) |
 | Watch an idea attacked and defended — simulated Visionary-vs-Skeptic debate, then a synthesis | product-debate | Type `/product-debate` |
 | Build a Lean Product Canvas, coached Socratically section by section | lpc-author | Type `/lpc-author` |
 | A narrative, step-by-step walkthrough document of code, docs, or a system | linear-walkthrough | Type `/linear-walkthrough` |

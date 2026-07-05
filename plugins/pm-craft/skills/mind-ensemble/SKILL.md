@@ -29,6 +29,7 @@ Users select from **frameworks**—formal mental models like Cynefin or Jobs to 
 - Otherwise default to **Tuning** — it recommends lenses and ends by offering the other modes.
 - Infer the track from the selection (personas → Simple, frameworks → Expert); default to Simple if unclear.
 - **Before embodying any lens, read its file.** The file is the definition — never improvise a lens from its name or its one-line index gloss.
+- If the user turns out to want coaching through their own thinking — questions, not analysis — hand off to the **thinking-partner** skill (model-invoked, so you can invoke it directly).
 
 ## Four Modes
 

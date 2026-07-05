@@ -1,4 +1,4 @@
-# Idealized Design
+# Idealised Design
 
 A methodology by Russell Ackoff for solving complex problems by designing the solution you would have right now if you could have whatever you wanted (subject to a few constraints), rather than trying to fix the existing system.
 
@@ -10,7 +10,7 @@ A methodology by Russell Ackoff for solving complex problems by designing the so
 ### 1. Formulate the Mess
 Identify the system of problems (the "mess"). Acknowledge that problems are interconnected; solving them in isolation (analysis) often creates new problems. Focus on *synthesis* (understanding the whole).
 
-### 2. Ends Planning (Idealized Design)
+### 2. Ends Planning (Idealised Design)
 Design the system you would have *right now* if you started from scratch.
 **Constraints:**
 1.  **Technological Feasibility**: Must be possible with *current* technology (no "magic wands").
