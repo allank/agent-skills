@@ -1,6 +1,7 @@
 ---
 name: interactive-explainer
-description: Builds a self-contained interactive HTML visualisation that makes a process, algorithm, decision logic, or system visually and experientially understandable. Primary input is a linear walkthrough, but works directly from code, documents, or concept descriptions too — and can invoke the linear-walkthrough skill as an intermediate step if the source material lacks sufficient clarity or structure. Use when the user wants to "see how this works", wants an interactive version of a walkthrough, wants to explain a process visually to an audience, or asks to "visualise", "animate", or "build an interactive explanation" of anything. Richer and more interactive is always preferred, as long as it makes the logic clearer rather than decorating it.
+description: Builds a self-contained interactive HTML visualisation that makes a process, algorithm, decision logic, or system experientially understandable.
+disable-model-invocation: true
 ---
 
 # Interactive Explainer
@@ -12,7 +13,7 @@ You build interactive HTML visualisations that make abstract processes, algorith
 Preferred input is a **linear walkthrough** (from the `linear-walkthrough` skill), because walkthroughs are already structured as a logical narrative with clear sections and identified connections. If none exists:
 
 - Work directly from source material (code, document, concept description)
-- If the source material is dense, ambiguous, or poorly structured, **invoke the `linear-walkthrough` skill first** to extract a clear narrative, then use that as input. This produces better visualisations than trying to interpret raw complexity directly.
+- If the source material is dense, ambiguous, or poorly structured, **read `../linear-walkthrough/SKILL.md`** (sibling skill in this plugin) and follow its Survey and Writing method to extract a clear narrative first, then use that as input. Skip its intake questions and file output — carry the audience and intent already established here; you only need the narrative. This produces better visualisations than interpreting raw complexity directly.
 
 ## Before You Build
 
@@ -39,7 +40,7 @@ The visualisation should be built around *that one thing*, not an exhaustive dia
 | Parameter-driven concept | **Live explorer** — sliders/inputs that change the output in real time, showing cause and effect |
 | Comparative options | **Side-by-side toggle** — switch between options and see what changes |
 
-If the content is complex enough to merit it, combine types — e.g. a decision tree that also shows parameter effects as sliders. Richer is better *if it adds clarity*. Never add visual complexity that requires the user to understand the visualisation before they can understand what it's visualising.
+If the content is complex enough to merit it, combine types — e.g. a decision tree that also shows parameter effects as sliders. Never add visual complexity that requires the user to understand the visualisation before they can understand what it's visualising.
 
 **Propose the approach briefly before building.** One sentence on what you'll build and why, then proceed unless the user redirects. Don't wait for approval — describe and build.
 
@@ -120,16 +121,11 @@ Structure: controls (sliders, inputs) in a sidebar; the main area shows the outp
 
 ## Saving and opening
 
-Save to (`$VAULT` is the vault root — set per machine):
-```
-$VAULT/03. Resources/Walkthroughs/<name>.html
-```
+Save to the path the user specifies, or `<name>.html` in the current working directory. Name it after the source walkthrough or subject matter — e.g. `Interactive - Pricing Strategy Selection.html`.
 
-Name it after the source walkthrough or subject matter — e.g. `Interactive - Pricing Strategy Selection.html`.
-
-After saving, you MUST open it in the default browser immediately — do not ask the user to do this:
+After saving, you MUST open it in the default browser immediately — do not ask the user to do this. Use the platform's opener (`open` on macOS, `xdg-open` on Linux, `start` on Windows):
 ```bash
-open "$VAULT/03. Resources/Walkthroughs/<name>.html"
+open "<path>/<name>.html"
 ```
 
 Run this command yourself before finishing. Then tell the user where the file was saved and confirm it's open.
