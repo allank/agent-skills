@@ -1,0 +1,27 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "agent-skills",
+  "description": "Allan Kent's open-source PM and productivity skills for Claude Code and Antigravity",
+  "owner": {
+    "name": "Allan Kent",
+    "email": "allan.kent@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "pm-craft",
+      "description": "PM craft skills: systems thinking, lean canvas, walkthroughs, explainers, mental models, stress-testing and debate",
+      "source": "./plugins/pm-craft",
+      "author": {
+        "name": "Allan Kent"
+      }
+    },
+    {
+      "name": "obsidian-tools",
+      "description": "Obsidian vault CLI skill — vault-native search, create, tasks, daily notes, and properties",
+      "source": "./plugins/obsidian-tools",
+      "author": {
+        "name": "Allan Kent"
+      }
+    }
+  ]
+}
