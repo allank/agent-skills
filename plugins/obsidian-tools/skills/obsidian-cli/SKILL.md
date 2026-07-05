@@ -1,6 +1,6 @@
 ---
 name: obsidian-cli
-description: Use the Obsidian CLI to interact with the vault natively—search, read, create, manage tasks, properties, daily notes, and more. Prefer CLI over raw file I/O for vault-aware operations.
+description: Use the Obsidian CLI to interact with the vault natively—search, read, create, manage tasks, properties, and daily notes. Prefer CLI over raw file I/O for vault-aware operations.
 ---
 
 # Obsidian CLI
@@ -22,13 +22,7 @@ The Obsidian CLI lets you interact with the vault through Obsidian itself, meani
 | Appending/prepending to files (respects frontmatter) | When Obsidian isn't running and you don't want to launch it |
 | Getting file metadata (size, dates, links) | |
 
-**Rule of thumb:** If the operation is *about the vault* (search, tasks, properties, daily notes), use CLI. If it's *about the file content* (editing specific lines), use file tools.
-
-## Agent Guidelines / Best Practices
-- **Prefer `obsidian search`** over `find` or `grep` for locating files within the vault. It is context-aware and handles strict pathing better.
-  - *Example*: "Find GEMINI.md" -> `obsidian search query="file:GEMINI.md"`
-- **Fallback Behavior**: Only use standard shell tools (`ls`, `find`) if `obsidian-cli` fails (e.g., Obsidian is not running).
-
+**Rule of thumb:** If the operation is *about the vault* (search, tasks, properties, daily notes), use CLI. If it's *about the file content* (editing specific lines), use file tools. Fall back to shell tools (`ls`, `find`, `grep`) only if the CLI fails — e.g. Obsidian is not running.
 
 ## Syntax
 
@@ -37,11 +31,11 @@ obsidian [vault=<name>] <command> [parameter=value] [flags]
 ```
 
 - **Parameters**: `key=value` — quote values with spaces: `name="My Note"`
-- **Flags**: Boolean switches, no value needed (e.g., `silent`, `overwrite`, `newtab`)
+- **Flags**: Boolean switches, no value needed (e.g., `overwrite`, `newtab`). Commands are silent by default; add `open` where supported to open the result in Obsidian.
 - **Vault targeting**: If the terminal's working directory is inside a vault, it's used automatically. Otherwise specify `vault=<name>`.
 - **File targeting**:
   - `file=<name>` — matches by filename (like a wikilink, no extension needed)
-  - `path=<path>` — exact path from vault root (e.g., `01. Projects/Work/README.md`)
+  - `path=<path>` — exact path from vault root (e.g., `Projects/Initiative/README.md`)
 - **Output**: Add `--copy` to any command to copy output to clipboard.
 
 ## Command Reference
@@ -51,57 +45,81 @@ obsidian [vault=<name>] <command> [parameter=value] [flags]
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
 | `open` | Open a file in Obsidian | `file`, `path`, `newtab` |
-| `create` | Create or overwrite a file | `name`, `path`, `content`, `template`, `overwrite`, `silent`, `newtab` |
+| `create` | Create or overwrite a file | `name`, `path`, `content`, `template`, `overwrite`, `open`, `newtab` |
 | `read` | Read file contents | `file`, `path` |
 | `append` | Append content to a file | `file`, `path`, `content`, `inline` |
 | `prepend` | Prepend content after frontmatter | `file`, `path`, `content`, `inline` |
-| `move` | Move or rename a file | `file`, `path`, `to` |
+| `move` | Move a file to another folder | `file`, `path`, `to` |
+| `rename` | Rename a file in place | `file`, `path`, `name` |
 | `delete` | Delete a file (trash by default) | `file`, `path`, `permanent` |
 | `file` | Show file info (size, dates, links) | `file`, `path` |
 | `files` | List files in vault | `folder`, `ext`, `total` |
+| `folder` | Show folder info | `path`, `info=files\|folders\|size` |
 | `folders` | List folders | `folder`, `total` |
 
 ### Daily Notes
 
+> [!IMPORTANT]
+> Requires the **Daily Notes core plugin**. Check with `obsidian plugins:enabled filter=core`; enable with `obsidian plugin:enable id=daily-notes filter=core`.
+
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
-| `daily` | Open today's daily note | `silent` |
+| `daily` | Open today's daily note | `paneType=tab\|split\|window` |
 | `daily:read` | Read today's daily note | — |
-| `daily:append` | Append to today's daily note | `content`, `inline` |
-| `daily:prepend` | Prepend to today's daily note | `content`, `inline` |
+| `daily:append` | Append to today's daily note | `content`, `inline`, `open` |
+| `daily:prepend` | Prepend to today's daily note | `content`, `inline`, `open` |
 
 ### Search
 
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
-| `search` | Search vault content | `query`, `path`, `limit`, `format=text\|json`, `matches`, `case` |
+| `search` | Search vault content (returns files) | `query`, `path`, `limit`, `total`, `case`, `format=text\|json` |
+| `search:context` | Search with matching lines in context | `query`, `path`, `limit`, `case`, `format=text\|json` |
 
 ### Tasks
 
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
-| `tasks` | List tasks (use `all` for vault-wide) | `all`, `daily`, `done`, `todo`, `verbose`, `status="char"` |
-| `task` | Show or update a specific task | `ref=path:line`, `toggle`, `done`, `todo` |
+| `tasks` | List tasks (vault-wide by default) | `file`, `path`, `daily`, `done`, `todo`, `status="char"`, `verbose`, `total` |
+| `task` | Show or update a specific task | `ref=path:line`, `toggle`, `done`, `todo`, `status="char"` |
 
 ### Properties and Metadata
 
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
-| `properties` | List properties for a file or vault | `file`, `path` |
+| `properties` | List properties for a file or vault | `file`, `path`, `counts`, `sort=count`, `format=yaml\|json\|tsv` |
 | `property:read` | Read a specific property value | `file`, `path`, `name` |
 | `property:set` | Set a property value | `file`, `path`, `name`, `value`, `type` |
 | `property:remove` | Remove a property | `file`, `path`, `name` |
-| `tags` | List tags | `all`, `counts`, `sort=count` |
-| `aliases` | List aliases | — |
+| `tags` | List tags | `file`, `path`, `counts`, `sort=count`, `total` |
+| `aliases` | List aliases | `file`, `path`, `total`, `verbose` |
 
-### Plugins and Themes
+### Bases
 
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
-| `plugins` | List installed/enabled plugins | — |
+| `bases` | List base files in vault | — |
+| `base:query` | Query a base and return results | `file`, `path`, `view`, `format=json\|csv\|tsv\|md\|paths` |
+| `base:views` | List views in a base file | `file`, `path` |
+
+### Plugins
+
+| Command | Purpose | Key Parameters |
+|---------|---------|----------------|
+| `plugins` | List installed plugins | `filter=core\|community`, `versions` |
+| `plugins:enabled` | List enabled plugins | `filter=core\|community` |
 | `plugin:install` | Install a community plugin | `id`, `enable` |
-| `plugin:enable` | Enable a plugin | `id` |
-| `plugin:disable` | Disable a plugin | `id` |
+| `plugin:enable` | Enable a plugin | `id`, `filter=core\|community` |
+| `plugin:disable` | Disable a plugin | `id`, `filter=core\|community` |
+
+### Command Palette (escape hatch)
+
+When no dedicated CLI command exists, any Obsidian command can be executed by ID:
+
+| Command | Purpose | Key Parameters |
+|---------|---------|----------------|
+| `commands` | List available Obsidian commands | `filter=<prefix>` |
+| `command` | Execute an Obsidian command by ID | `id=<command-id>` |
 
 ### Links and Graph
 
@@ -127,23 +145,27 @@ obsidian [vault=<name>] <command> [parameter=value] [flags]
 | Command | Purpose | Key Parameters |
 |---------|---------|----------------|
 | `vault` | Show vault info | `info=name\|path\|files\|folders\|size` |
+| `vaults` | List known vaults | `verbose`, `total` |
 | `wordcount` | Count words and characters | `file`, `path`, `words`, `characters` |
 | `bookmarks` | List bookmarks | `total`, `verbose` |
 | `recents` | List recently opened files | `total` |
 | `random:read` | Read a random note | `folder` |
+| `version` | Show Obsidian version | — |
+
+More command families exist (sync, themes, snippets, tabs, hotkeys) — run `obsidian help` for the full list.
 
 ## Practical Examples
 
 ### Daily workflow
 ```bash
-# Read today's daily note
+# Read today's daily note (requires Daily Notes plugin)
 obsidian daily:read
 
 # Add a task to today's note
-obsidian daily:append content="- [ ] Review PRD for Shadow Quoting Engine"
+obsidian daily:append content="- [ ] Review the pricing proposal"
 
 # Check open tasks across the vault
-obsidian tasks todo all
+obsidian tasks todo
 
 # Check tasks in today's daily note only
 obsidian tasks todo daily
@@ -151,17 +173,17 @@ obsidian tasks todo daily
 
 ### File operations
 ```bash
-# Create a new discovery doc
-obsidian create path="01. Projects/Work/New Initiative/Discovery.md" content="# Discovery\n\n## Problem Statement\n\n## Hypotheses\n"
+# Create a doc with frontmatter
+obsidian create path="Projects/New Initiative/README.md" content="---\ntags: [project, active]\nstatus: discovery\n---\n\n# New Initiative\n\n## Problem Statement\n"
 
 # Create from a template
 obsidian create name="Sprint Retro" template="Meeting Notes"
 
-# Read a specific file
-obsidian read file="PRD-Shadow-Quoting-Engine"
+# Read a file by name (wikilink-style, no extension)
+obsidian read file="Discovery"
 
-# Append a decision to a file
-obsidian append path="01. Projects/Work/Project/decisions/log.md" content="\n## 2026-02-11: Pricing Model\n- **Decision**: Use VWAP\n- **Rationale**: Better reflects actual market depth\n"
+# Append a decision to a log
+obsidian append path="Projects/New Initiative/decisions.md" content="\n## 2026-07-05: Pricing model\n- **Decision**: ...\n- **Rationale**: ...\n"
 ```
 
 ### Search and discovery
@@ -169,32 +191,27 @@ obsidian append path="01. Projects/Work/Project/decisions/log.md" content="\n## 
 # Find all mentions of a topic
 obsidian search query="pricing logic" limit=10
 
-# Search within a specific folder
-obsidian search query="risk" path="01. Projects/Work"
+# See the matching lines in context
+obsidian search:context query="pricing logic" limit=10
 
-# Get JSON results for structured processing
-obsidian search query="stakeholder" format=json
+# Find a file by name
+obsidian search query="file:README.md"
+
+# Search within a folder, JSON output for structured processing
+obsidian search query="risk" path="Projects" format=json
 ```
 
 ### Properties and metadata
 ```bash
 # Set status on a document
-obsidian property:set path="01. Projects/Work/Initiative/README.md" name=status value=active
+obsidian property:set path="Projects/New Initiative/README.md" name=status value=active
 
 # Add tags
-obsidian property:set file="Discovery Doc" name=tags value="[discovery, h2]" type=list
+obsidian property:set file="Discovery" name=tags value="[discovery, h2]" type=list
 
 # List all tags in the vault with counts
 obsidian tags counts sort=count
 ```
 
-### Project scaffolding
-```bash
-# Create project files
-obsidian create path="01. Projects/Work/new-initiative/README.md" content="---\ntags: [project, active]\nstatus: discovery\ncreated: 2026-02-11\n---\n\n# New Initiative\n\n## Status\n🟡 Discovery\n\n## Problem Statement\n\n## Success Criteria\n\n## Open Questions\n"
-
-obsidian create path="01. Projects/Work/new-initiative/.gemini/GEMINI.md" content="# New Initiative\n\n## Overview\n\n## Key Documents\n\n## Stakeholders\n"
-```
-
 > [!NOTE]
-> The CLI is in **early access** (Obsidian 1.12+). Commands and syntax may change. Run `obsidian help` to check the latest available commands.
+> Command reference verified against **Obsidian 1.13**. The CLI is still evolving: if a command errors unexpectedly, run `obsidian help <command>` to check current syntax before falling back to shell tools.
