@@ -1,6 +1,6 @@
 # agent-skills
 
-Allan Kent's open-source PM and productivity skills for Claude Code and Antigravity.
+Open-source PM and productivity skills for Claude Code and Antigravity.
 
 ## Plugins
 
