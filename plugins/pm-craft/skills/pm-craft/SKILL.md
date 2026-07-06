@@ -17,5 +17,6 @@ Match the user's need to one skill below and tell them what to type. Most of the
 | A narrative, step-by-step walkthrough document of code, docs, or a system | linear-walkthrough | Type `/linear-walkthrough` |
 | An interactive HTML visualisation of a process, algorithm, or decision logic | interactive-explainer | Type `/interactive-explainer` (best fed a walkthrough) |
 | Analyse a problem through mental-model lenses — 11 personas, 20 frameworks, four modes | mind-ensemble | Type `/mind-ensemble` |
+| Wrap up a session into a resumable per-topic handoff file, or resume a parked topic | session-handoff | Fires on its own ("wrap up", "park this", resume requests) |
 
 Disambiguation for the three that overlap: **product-grill** interviews *you* (your conviction is the subject); **product-debate** argues *at* you (the idea is the subject, you watch); **mind-ensemble** analyses through chosen lenses (the lens does the work, alone or composed).

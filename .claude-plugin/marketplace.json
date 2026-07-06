@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "pm-craft",
-      "description": "PM craft skills: systems thinking, lean canvas, walkthroughs, explainers, mental models, stress-testing and debate",
+      "description": "PM craft skills: systems thinking, lean canvas, walkthroughs, explainers, mental models, stress-testing, debate and session handoffs",
       "source": "./plugins/pm-craft",
       "author": {
         "name": "Allan Kent"
