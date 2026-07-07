@@ -1,0 +1,34 @@
+name: Build skill packages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "plugins/**"
+      - "scripts/build-skills.sh"
+      - ".github/workflows/build-skills.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build .skill packages
+        run: ./scripts/build-skills.sh
+
+      - name: Publish to rolling release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ! gh release view skills --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release create skills \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Skill packages" \
+              --notes "Rolling release of .skill packages for Claude AI / Cowork. Rebuilt on every push to main."
+          fi
+          gh release upload skills dist/*.skill --repo "$GITHUB_REPOSITORY" --clobber

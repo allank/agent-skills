@@ -30,10 +30,27 @@ Obsidian vault integration. Requires the [Obsidian CLI](https://obsidian.md/help
 
 ## Install (Claude Code)
 
+Claude Code installs skills through the plugin marketplace — add the marketplace once, then install either plugin:
+
 ```bash
 claude plugin marketplace add allank/agent-skills
 claude plugin install pm-craft@allank-skills
 claude plugin install obsidian-tools@allank-skills
+```
+
+## Install (Claude AI / Cowork)
+
+The Claude desktop and web apps don't use the plugin marketplace — each skill is uploaded individually as a `.skill` file.
+
+1. Download the `.skill` files you want from the [skills release](https://github.com/allank/agent-skills/releases/tag/skills) (rebuilt automatically on every push to `main`)
+2. In Claude, open **Settings → Skills**
+3. Click **Add**, then upload the `.skill` file
+4. Repeat for each skill
+
+To build the packages locally instead:
+
+```bash
+./scripts/build-skills.sh   # writes dist/<skill-name>.skill for every skill
 ```
 
 ## Install (Antigravity)
