@@ -3,10 +3,7 @@ name: Build skill packages
 on:
   push:
     branches: [main]
-    paths:
-      - "plugins/**"
-      - "scripts/build-skills.sh"
-      - ".github/workflows/build-skills.yml"
+    tags: ["v[0-9]*"]
   workflow_dispatch:
 
 permissions:
@@ -21,14 +18,16 @@ jobs:
       - name: Build .skill packages
         run: ./scripts/build-skills.sh
 
-      - name: Publish to rolling release
+      - name: Publish release for tag
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if ! gh release view skills --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
-            gh release create skills \
+          if gh release view "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" dist/*.skill --repo "$GITHUB_REPOSITORY" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" dist/*.skill \
               --repo "$GITHUB_REPOSITORY" \
-              --title "Skill packages" \
-              --notes "Rolling release of .skill packages for Claude AI / Cowork. Rebuilt on every push to main."
+              --title "$GITHUB_REF_NAME" \
+              --generate-notes
           fi
-          gh release upload skills dist/*.skill --repo "$GITHUB_REPOSITORY" --clobber

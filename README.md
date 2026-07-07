@@ -42,7 +42,7 @@ claude plugin install obsidian-tools@allank-skills
 
 The Claude desktop and web apps don't use the plugin marketplace — each skill is uploaded individually as a `.skill` file.
 
-1. Download the `.skill` files you want from the [skills release](https://github.com/allank/agent-skills/releases/tag/skills) (rebuilt automatically on every push to `main`)
+1. Download the `.skill` files you want from the [latest release](https://github.com/allank/agent-skills/releases/latest) (published automatically for each version tag)
 2. In Claude, open **Settings → Skills**
 3. Click **Add**, then upload the `.skill` file
 4. Repeat for each skill
