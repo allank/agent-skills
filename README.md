@@ -38,6 +38,14 @@ claude plugin install pm-craft@allank-skills
 claude plugin install obsidian-tools@allank-skills
 ```
 
+## Install (skills.sh CLI)
+
+The [skills CLI](https://skills.sh) installs skills into Claude Code and other agents (Cursor, Codex, etc.) without the plugin marketplace:
+
+```bash
+npx skills add allank/agent-skills
+```
+
 ## Install (Claude AI / Cowork)
 
 The Claude desktop and web apps don't use the plugin marketplace — each skill is uploaded individually as a `.skill` file.
