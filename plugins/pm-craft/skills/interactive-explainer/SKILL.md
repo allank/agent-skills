@@ -15,7 +15,8 @@ You build interactive HTML visualisations that make abstract processes, algorith
 Preferred input is a **linear walkthrough** (from the `linear-walkthrough` skill), because walkthroughs are already structured as a logical narrative with clear sections and identified connections. If none exists:
 
 - Work directly from source material (code, document, concept description)
-- If the source material is dense, ambiguous, or poorly structured, **read `../linear-walkthrough/SKILL.md`** (sibling skill in this plugin) and follow its Survey and Writing method to extract a clear narrative first, then use that as input. Skip its intake questions and file output — carry the audience and intent already established here; you only need the narrative. This produces better visualisations than interpreting raw complexity directly.
+- If the source material is dense, ambiguous, or poorly structured, extract a clear narrative first and use that as your input — visualising a narrative produces better results than interpreting raw complexity directly. To extract it: survey the material end to end before writing anything; identify the sequential steps, decision points, or interacting parts that carry the logic; then order them into a beginning-to-end narrative where each step states its purpose and its connection to the next. You only need the narrative — do not write it to a file or ask intake questions; carry the audience and intent already established here.
+- If the user has the `linear-walkthrough` skill installed, suggest they run it on the source material first and point this skill at its output — a full walkthrough is richer input than the quick extraction above.
 
 ## Before You Build
 
