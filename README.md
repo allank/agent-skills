@@ -12,7 +12,7 @@ PM craft skills — thinking, exploration, and communication. Three fire automat
 |-------|------------|--------------|
 | `pm-craft` | `/pm-craft` | Router — matches your need to the right skill below |
 | `product-grill` | automatic | Stress-test a product idea by interview — six PM lenses → conviction brief |
-| `thinking-partner` | automatic | Systems thinking coach — Cynefin, Three Horizons, Wardley Mapping, Idealised Design |
+| `thinking-partner` | automatic | Systems thinking coach — Cynefin, Three Horizons, Wardley Mapping, Idealised Design, Intuition Pumps |
 | `lpc-author` | `/lpc-author` | Socratic coaching through writing a Lean Product Canvas |
 | `product-debate` | `/product-debate` | Simulated Visionary-vs-Skeptic debate over an idea, then a synthesised path forward |
 | `linear-walkthrough` | `/linear-walkthrough` | Narrative, step-by-step walkthrough of code, docs, or concepts |
