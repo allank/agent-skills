@@ -76,6 +76,9 @@ Once Phase 2 is solid:
 
 ## Final Step — Generate the Canvas
 
+See [references/example.md](references/example.md) for a worked example of the
+Christensen-format JTBD sentence and a Hypotheses statement at target tightness.
+
 Once all three phases are complete:
 
 1. **Read the template** at `assets/canvas-template.md` with the Read tool — never write the canvas from memory. The section names and heading structure are fixed.
