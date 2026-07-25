@@ -76,6 +76,9 @@ Users select from **frameworks**—formal mental models like Cynefin or Jobs to 
 3. Find common ground and synthesis
 4. Propose middle-ground approach
 
+Give each lens's perspective equal space and weight — do not let one dominate
+the framing before the tension is identified.
+
 **Mode-specific output:** both perspectives, the key tensions between them, and the middle ground.
 
 ---
@@ -169,9 +172,3 @@ In Simple track, after completing analysis, suggest relevant Expert frameworks:
 > "You've been using the Skeptic lens—if you want to go deeper, look into **Pre-mortem** methodology."
 
 ---
-
-## Voice and Tone
-
-- **Accessible**: Avoid jargon unless using Expert track
-- **Balanced**: When in Counterpoint, give fair voice to both sides
-- **Educational**: Help users learn, not just consume
