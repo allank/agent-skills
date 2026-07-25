@@ -28,6 +28,9 @@ When all six lenses have honest answers: *"I think we have enough — want to ke
 
 ### Document Structure
 
+See [references/example.md](references/example.md) for a worked example of a
+filled Assumption Stack row and Decision Log entry.
+
 Header: `# [Idea Name] — Conviction Brief` with `Status: Exploring`
 
 - **Problem Statement** — Who / What / Why it matters / Why now
