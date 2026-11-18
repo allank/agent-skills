@@ -6,7 +6,7 @@ Open-source PM and productivity skills for Claude Code and Antigravity.
 
 ### pm-craft
 
-PM craft skills — thinking, exploration, and communication. Three fire automatically from conversation; the rest you invoke by name (`/pm-craft` routes you if you forget which).
+PM craft skills — thinking, exploration, and communication. Two fire automatically from conversation; the rest you invoke by name (`/pm-craft` routes you if you forget which).
 
 | Skill | Invocation | What it does |
 |-------|------------|--------------|
@@ -18,7 +18,8 @@ PM craft skills — thinking, exploration, and communication. Three fire automat
 | `linear-walkthrough` | `/linear-walkthrough` | Narrative, step-by-step walkthrough of code, docs, or concepts |
 | `interactive-explainer` | `/interactive-explainer` | Self-contained interactive HTML visualisation of a process or logic |
 | `mind-ensemble` | `/mind-ensemble` | Mental-model analysis — 11 personas, 20 frameworks, four modes |
-| `session-handoff` | automatic | Per-topic session handoffs — wrap up into a resumable state file, pick any topic back up later |
+| `session-start` | `/session-start` | Load corrections, stable facts and recent session history from the project's context folder |
+| `session-end` | `/session-end` | Promote learnings into skills and rules, prune stable facts, write the session log entry, commit |
 
 ### obsidian-tools
 
@@ -73,7 +74,7 @@ git clone https://github.com/allank/agent-skills ~/code/agent-skills
 - `linear-walkthrough` and `interactive-explainer` are adapted from Simon Willison's agentic engineering patterns: [Linear walkthroughs](https://simonwillison.net/guides/agentic-engineering-patterns/linear-walkthroughs/) and [Interactive explanations](https://simonwillison.net/guides/agentic-engineering-patterns/interactive-explanations/)
 - `product-grill` is inspired by Matt Pocock's [Grill with docs](https://www.aihero.dev/grill-with-docs)
 - `product-debate` is adapted from [Rian van der Merwe](https://elezea.com/)'s [debate-product-idea prompt](https://github.com/rianvdm/product-ai-public/blob/main/02-prompts/pm/debate-product-idea.md)
-- `session-handoff` is adapted from Matt Pocock's [handoff skill](https://github.com/mattpocock/skills/blob/main/skills/productivity/handoff/SKILL.md) and Rian van der Merwe's [session-end command](https://github.com/rianvdm/product-ai-public/blob/main/.opencode/command/session-end.md)
+- `session-start` and `session-end` are adapted from Rian van der Merwe's [session-start](https://github.com/rianvdm/product-ai-public/blob/main/.opencode/command/session-start.md) and [session-end](https://github.com/rianvdm/product-ai-public/blob/main/.opencode/command/session-end.md) commands, and Matt Pocock's [handoff skill](https://github.com/mattpocock/skills/blob/main/skills/productivity/handoff/SKILL.md)
 
 ## Portable Core Rule
 
