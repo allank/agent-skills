@@ -5,6 +5,8 @@ description: "Build a repository's public-facing presentation from its current c
 
 # Public Face
 
+<!-- Adapted from Jonathan Hitchcock's public-face skill (https://github.com/vhata/claude-skills/tree/main/public-face) -->
+
 Run this skill inside a repository to complete its local presentation work.
 Resolve the repository from the current directory with
 `git rev-parse --show-toplevel`; no repository argument is required. Honor
