@@ -1,6 +1,6 @@
 # agent-skills
 
-Open-source PM and productivity skills for Claude Code and Antigravity.
+Open-source PM, productivity and developer skills for Claude Code and Antigravity.
 
 ## Plugins
 
@@ -29,14 +29,23 @@ Obsidian vault integration. Requires the [Obsidian CLI](https://obsidian.md/help
 |-------|------------|--------------|
 | `obsidian-cli` | automatic | Vault-native operations via the Obsidian CLI: search, create, tasks, properties, daily notes — preferred over raw file I/O |
 
+### dev-tools
+
+Developer workflow skills. `public-face` generates raster artwork through the [Antigravity CLI](https://antigravity.google) (`agy`) and its built-in `image-generator` subagent; without `agy` it falls back to vector artwork.
+
+| Skill | Invocation | What it does |
+|-------|------------|--------------|
+| `public-face` | automatic | Builds a repository's public presentation — logo, social preview, README branding, About-sidebar copy — on a branch in an isolated worktree, with a review gallery and ready-to-run hosting commands |
+
 ## Install (Claude Code)
 
-Claude Code installs skills through the plugin marketplace — add the marketplace once, then install either plugin:
+Claude Code installs skills through the plugin marketplace — add the marketplace once, then install any plugin:
 
 ```bash
 claude plugin marketplace add allank/agent-skills
 claude plugin install pm-craft@allank-skills
 claude plugin install obsidian-tools@allank-skills
+claude plugin install dev-tools@allank-skills
 ```
 
 ## Install (skills.sh CLI)
@@ -75,6 +84,7 @@ git clone https://github.com/allank/agent-skills ~/code/agent-skills
 - `product-grill` is inspired by Matt Pocock's [Grill with docs](https://www.aihero.dev/grill-with-docs)
 - `product-debate` is adapted from [Rian van der Merwe](https://elezea.com/)'s [debate-product-idea prompt](https://github.com/rianvdm/product-ai-public/blob/main/02-prompts/pm/debate-product-idea.md)
 - `session-start` and `session-end` are adapted from Rian van der Merwe's [session-start](https://github.com/rianvdm/product-ai-public/blob/main/.opencode/command/session-start.md) and [session-end](https://github.com/rianvdm/product-ai-public/blob/main/.opencode/command/session-end.md) commands, and Matt Pocock's [handoff skill](https://github.com/mattpocock/skills/blob/main/skills/productivity/handoff/SKILL.md)
+- `public-face` is adapted from Jonathan Hitchcock's [public-face skill](https://github.com/vhata/claude-skills/tree/main/public-face), with image generation moved from Codex to Antigravity's `image-generator` subagent
 
 ## Portable Core Rule
 
